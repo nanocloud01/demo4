@@ -1,0 +1,10 @@
+logging:
+  level:
+    root: INFO
+    com.tuempresa.tuapp: DEBUG
+    org.springframework.web: WARN
+  file:
+    name: logs/aplicacion.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
