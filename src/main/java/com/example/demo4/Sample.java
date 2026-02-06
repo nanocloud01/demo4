@@ -26,7 +26,19 @@ public class Sample {
 
     @GetMapping("/whoami")
     public String whoAmI() {
-        return "Atendido por el pod: " + podName;
+        try {
+            // Obtiene el nombre del host (en K8s es el nombre del Pod)
+            String podName = InetAddress.getLocalHost().getHostName();
+
+            // También puedes obtener la IP si prefieres
+            String podIp = InetAddress.getLocalHost().getHostAddress();
+
+            return "Respuesta atendida por el Pod: " + podName + " (IP: " + podIp + ")";
+
+        } catch (UnknownHostException e) {
+            return "No pude identificarme: " + e.getMessage();
+        }
+//        return "Atendido por el pod: " + podName;
     }
 
 }
