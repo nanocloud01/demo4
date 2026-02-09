@@ -28,7 +28,11 @@ public class Sample {
     @GetMapping("/whoami")
     public String whoAmI() {
 
-        logger.info("traceId en MDC={}", MDC.get("traceId"));
+        logger.info("**************************************");
+
+        System.out.println("aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
+
+        //logger.info("traceId en MDC={}", MDC.get("traceId"));
 
         String user = "Juan";
         logger.info("User {} session init: ", user);

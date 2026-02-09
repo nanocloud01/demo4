@@ -9,6 +9,9 @@
                 <KeyValuePair key="thread" value="%t"/>
                 <KeyValuePair key="level" value="%p"/>
                 <KeyValuePair key="message" value="%m"/>
+                <KeyValuePair key="service" value="mi-servicio-springboot"/>
+                <KeyValuePair key="timestamp" value="$${date:yyyy-MM-dd'T'HH:mm:ss.SSSZ}" />
+                <KeyValuePair key="pod_name" value="${env:POD_NAME:-local}" />
             </JsonLayout>
         </Console>
     </Appenders>
