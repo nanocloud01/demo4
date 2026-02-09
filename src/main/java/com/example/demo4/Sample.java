@@ -2,6 +2,7 @@ package com.example.demo4;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,8 +28,10 @@ public class Sample {
     @GetMapping("/whoami")
     public String whoAmI() {
 
+        logger.info("traceId en MDC={}", MDC.get("traceId"));
+
         String user = "Juan";
-        logger.info("User {} ha iniciado sesión", user);
+        logger.info("User {} session init: ", user);
 
         try {
             // Obtiene el nombre del host (en K8s es el nombre del Pod)

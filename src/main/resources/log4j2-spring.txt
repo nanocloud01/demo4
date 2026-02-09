@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+
+    <!-- ===================== -->
+    <!--  PROPIEDADES GLOBALES -->
+    <!-- ===================== -->
+    <Properties>
+        <Property name="serviceName">${spring.application.name:-app}</Property>
+        <Property name="environment">${spring.profiles.active:-local}</Property>
+    </Properties>
+
+    <!-- ===================== -->
+    <!--     APPENDERS         -->
+    <!-- ===================== -->
+    <Appenders>
+
+        <!-- Consola en JSON (stdout) -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <JsonLayout
+                compact="true"
+                eventEol="true"
+                stacktraceAsString="true"
+                includeTimeMillis="true">
+
+                <KeyValuePair key="service" value="${serviceName}" />
+                <KeyValuePair key="environment" value="${environment}" />
+
+                <!-- Trace -->
+                <KeyValuePair key="traceId" value="$${ctx:traceId}" />
+                <KeyValuePair key="spanId" value="$${ctx:spanId}" />
+
+            </JsonLayout>
+        </Console>
+
+        <!-- Async wrapper -->
+        <Async name="AsyncConsole">
+            <AppenderRef ref="Console"/>
+        </Async>
+
+    </Appenders>
+
+    <!-- ===================== -->
+    <!--       LOGGERS         -->
+    <!-- ===================== -->
+    <Loggers>
+
+        <!-- Reduce ruido de frameworks -->
+        <Logger name="org.springframework" level="INFO"/>
+        <Logger name="org.hibernate" level="WARN"/>
+
+        <!-- Root -->
+        <Root level="INFO">
+            <AppenderRef ref="AsyncConsole"/>
+        </Root>
+
+    </Loggers>
+
+</Configuration>
