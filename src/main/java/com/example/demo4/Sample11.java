@@ -19,10 +19,6 @@ public class Sample11 {
         logger.warn("Mensaje WARN - advertencia");
         logger.error("Mensaje ERROR - error");
 
-        // Con parámetros (más eficiente que concatenar)
-        String usuario = "Juan";
-        logger.info("Usuario {} ha iniciado sesión", usuario);
-
         // Con excepción
         try {
             int c = 16 / 0;
