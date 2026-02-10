@@ -22,9 +22,10 @@ public class Sample11 {
         logger.warn("Mensaje WARN - advertencia");
         logger.error("Mensaje ERROR - error");
 
+        String podName = null;
         try {
             // Obtiene el nombre del host (en K8s es el nombre del Pod)
-            String podName = InetAddress.getLocalHost().getHostName();
+            podName = InetAddress.getLocalHost().getHostName();
 
             // También puedes obtener la IP si prefieres
             String podIp = InetAddress.getLocalHost().getHostAddress();
@@ -35,6 +36,6 @@ public class Sample11 {
             return "No pude identificarme: " + e.getMessage();
         }
 
-        return "Sample-11";
+        return "Sample-11 " + podName;
     }
 }
