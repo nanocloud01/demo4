@@ -5,6 +5,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 @RestController
 public class Sample11 {
 
@@ -18,6 +21,20 @@ public class Sample11 {
         logger.info("Mensaje INFO - información general");
         logger.warn("Mensaje WARN - advertencia");
         logger.error("Mensaje ERROR - error");
+
+
+        try {
+            // Obtiene el nombre del host (en K8s es el nombre del Pod)
+            String podName = InetAddress.getLocalHost().getHostName();
+
+            // También puedes obtener la IP si prefieres
+            String podIp = InetAddress.getLocalHost().getHostAddress();
+
+            logger.info("Respuesta atendida por el Pod: " + podName + " (IP: " + podIp + ")");
+
+        } catch (UnknownHostException e) {
+            return "No pude identificarme: " + e.getMessage();
+        }
 
         // Con excepción
         try {

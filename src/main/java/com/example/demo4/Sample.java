@@ -28,14 +28,10 @@ public class Sample {
     @GetMapping("/whoami")
     public String whoAmI() {
 
-        logger.info("**************************************");
-
-        System.out.println("aquiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii");
-
         //logger.info("traceId en MDC={}", MDC.get("traceId"));
 
-        String user = "Juan";
-        logger.info("User {} session init: ", user);
+//        String user = "Juan";
+//        logger.info("User {} session init: ", user);
 
         try {
             // Obtiene el nombre del host (en K8s es el nombre del Pod)
