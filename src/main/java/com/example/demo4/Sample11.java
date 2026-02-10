@@ -22,7 +22,6 @@ public class Sample11 {
         logger.warn("Mensaje WARN - advertencia");
         logger.error("Mensaje ERROR - error");
 
-
         try {
             // Obtiene el nombre del host (en K8s es el nombre del Pod)
             String podName = InetAddress.getLocalHost().getHostName();
@@ -34,13 +33,6 @@ public class Sample11 {
 
         } catch (UnknownHostException e) {
             return "No pude identificarme: " + e.getMessage();
-        }
-
-        // Con excepción
-        try {
-            int c = 16 / 0;
-        } catch (Exception e) {
-            logger.error("Error procesando solicitud", e);
         }
 
         return "Sample-11";

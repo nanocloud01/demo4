@@ -12,18 +12,8 @@ public class Sample12 {
 
     @GetMapping("/sample12")
     public String get() {
-
-        logger.trace("Mensaje TRACE - muy detallado");
-        logger.debug("Mensaje DEBUG - información de depuración");
-        logger.info("Mensaje INFO - información general");
-        logger.warn("Mensaje WARN - advertencia");
-        logger.error("Mensaje ERROR - error");
-
-        // Con parámetros (más eficiente que concatenar)
-        String usuario = "Juan";
-        logger.info("Usuario {} ha iniciado sesión", usuario);
-
-        // Con excepción
+        logger.info("Message INFO - lanzando una excepcion");
+        // Con excepcion
         try {
             int c = 16 / 0;
         } catch (Exception e) {
